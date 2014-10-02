@@ -62,7 +62,6 @@ class ForgotController extends AbstractActionController
         $token = $this->params('token');
         $user = $forgotService->getUserFromToken($token);
 
-
         $viewModel = new ViewModel([
             'form' => $form,
         ]);
