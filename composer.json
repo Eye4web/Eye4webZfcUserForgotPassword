@@ -31,7 +31,7 @@
             "Eye4web\\ZfcUser\\ForgotPassword": "src/"
         },
         "classmap": [
-            "./src/Eye4web/ForgotPassword/Module.php"
+            "./src/Eye4web/ZfcUser/ForgotPassword/Module.php"
         ]
     },
     "require-dev" : {
