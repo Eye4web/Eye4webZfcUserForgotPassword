@@ -1,0 +1,9 @@
+<?php
+/** @var \Eye4web\ZfcUser\ForgotPassword\Form\Forgot\RequestForm $form */
+$form = $this->form;
+
+echo $this->form()->openTag($form);
+echo $this->formRow($form->get('email')) . '<br />';
+echo $this->formRow($form->get('submit')->setLabel('Request new password'));
+echo $this->formRow($form->get('csrf'));
+echo $this->form()->closeTag($form);
