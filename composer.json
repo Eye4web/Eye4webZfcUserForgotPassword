@@ -1,0 +1,44 @@
+{
+    "name": "eye4web/eye4web-zfc-user-forgot-password",
+    "description": "Forgot password for ZfcUser",
+    "type": "library",
+    "license": "MIT",
+    "keywords": [
+        "zf2",
+        "zfc-user",
+        "zfcuser",
+        "forgot-password"
+    ],
+    "homepage": "https://github.com/Eye4web/Eye4webZfcUserForgotPassword",
+    "authors": [
+        {
+            "name": "Nikolaj Løvenhardt Petersen",
+            "email": "np@eye4web.dk"
+        }
+    ],
+    "extra": {
+        "branch-alias": {
+            "dev-master": "master-dev"
+        }
+    },
+    "require": {
+        "php": ">=5.4",
+        "zendframework/zendframework": "~2.3",
+        "doctrine/orm": "2.4.*"
+    },
+    "autoload": {
+        "psr-0": {
+            "Eye4web\\ZfcUser\\ForgotPassword": "src/"
+        },
+        "classmap": [
+            "./src/Eye4web/ForgotPassword/Module.php"
+        ]
+    },
+    "require-dev" : {
+        "phpmd/phpmd" : "1.4.*",
+        "phpunit/phpunit" : "4.*",
+        "squizlabs/php_codesniffer" : "1.5.*",
+        "zendframework/zend-captcha" : "~2.1",
+        "codeclimate/php-test-reporter": "dev-master"
+    }
+}
