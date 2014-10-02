@@ -192,8 +192,6 @@ class TokenMapperTest extends PHPUnit_Framework_TestCase
         $this->assertInstanceOf('Eye4web\ZfcUser\ForgotPassword\Entity\TokenInterface', $result);
     }
 
-
-
     public function testGenerateWithoutExistingToken()
     {
         $userId = 1;
