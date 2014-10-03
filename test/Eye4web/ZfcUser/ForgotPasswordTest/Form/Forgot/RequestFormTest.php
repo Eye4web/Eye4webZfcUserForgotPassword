@@ -25,5 +25,6 @@ class RequestFormTest extends PHPUnit_Framework_TestCase
         $this->assertTrue($form->has('email'));
         $this->assertTrue($form->has('csrf'));
         $this->assertTrue($form->has('submit'));
+        $this->assertTrue($form->getInputFilter()->has('email'));
     }
 }

@@ -26,8 +26,6 @@ class RequestForm extends Form implements InputFilterProviderInterface
                 'label' => 'E-mail',
 
             ],
-            'attributes' => [
-            ],
         ]);
 
         $this->add([
