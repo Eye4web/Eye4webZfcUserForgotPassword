@@ -18,19 +18,19 @@ class ForgotPasswordController extends AbstractActionController
     protected $changePasswordForm;
 
     /** @var ForgotPasswordService */
-    protected $ForgotPasswordService;
+    protected $forgotPasswordService;
 
-    public function __construct(RequestForm $requestForm, ChangePasswordForm $changePasswordForm, ForgotPasswordService $ForgotPasswordService)
+    public function __construct(RequestForm $requestForm, ChangePasswordForm $changePasswordForm, ForgotPasswordService $forgotPasswordService)
     {
         $this->requestForm = $requestForm;
         $this->changePasswordForm = $changePasswordForm;
-        $this->ForgotPasswordService = $ForgotPasswordService;
+        $this->forgotPasswordService = $forgotPasswordService;
     }
 
     public function indexAction()
     {
         $form = $this->requestForm;
-        $ForgotPasswordService = $this->ForgotPasswordService;
+        $forgotPasswordService = $this->forgotPasswordService;
 
         $viewModel = new ViewModel([
             'form' => $form,
@@ -47,7 +47,7 @@ class ForgotPasswordController extends AbstractActionController
             return $viewModel;
         }
 
-        if ($ForgotPasswordService->request($prg)) {
+        if ($forgotPasswordService->request($prg)) {
             $viewModel->setTemplate('zfc-user-forgot-password/confirmation/sent-email.phtml');
             return $viewModel;
         }
@@ -58,9 +58,9 @@ class ForgotPasswordController extends AbstractActionController
     public function changePasswordAction()
     {
         $form = $this->changePasswordForm;
-        $ForgotPasswordService = $this->ForgotPasswordService;
+        $forgotPasswordService = $this->forgotPasswordService;
         $token = $this->params('token');
-        $user = $ForgotPasswordService->getUserFromToken($token);
+        $user = $forgotPasswordService->getUserFromToken($token);
 
         $viewModel = new ViewModel([
             'form' => $form,
@@ -82,7 +82,7 @@ class ForgotPasswordController extends AbstractActionController
             return $viewModel;
         }
 
-        if ($ForgotPasswordService->changePassword($prg, $user)) {
+        if ($forgotPasswordService->changePassword($prg, $user)) {
             $viewModel->setTemplate('zfc-user-forgot-password/confirmation/changed-password.phtml');
             return $viewModel;
         }

@@ -54,14 +54,14 @@ class ForgotPasswordControllerFactoryTest extends PHPUnit_Framework_TestCase
             ->with('Eye4web\ZfcUser\ForgotPassword\Form\Forgot\ChangePasswordForm')
             ->willReturn($changePasswordMock);
 
-        $ForgotPasswordService = $this->getMockBuilder('Eye4web\ZfcUser\ForgotPassword\Service\ForgotPasswordService')
+        $forgotPasswordService = $this->getMockBuilder('Eye4web\ZfcUser\ForgotPassword\Service\ForgotPasswordService')
             ->disableOriginalConstructor()
             ->getMock();
 
         $serviceLocator->expects($this->at(2))
             ->method('get')
             ->with('Eye4web\ZfcUser\ForgotPassword\Service\ForgotPasswordService')
-            ->willReturn($ForgotPasswordService);
+            ->willReturn($forgotPasswordService);
 
         $result = $this->factory->createService($this->controllerManager);
 
