@@ -2,17 +2,17 @@
 
 namespace Eye4web\ZfcUser\ForgotPassword\Factory\Service;
 
-use Eye4web\ZfcUser\ForgotPassword\Service\ForgotService;
+use Eye4web\ZfcUser\ForgotPassword\Service\ForgotPasswordService;
 use Zend\ServiceManager\FactoryInterface;
 use Zend\ServiceManager\ServiceLocatorInterface;
 
-class ForgotServiceFactory implements FactoryInterface
+class ForgotPasswordServiceFactory implements FactoryInterface
 {
     /**
      * Create service
      *
      * @param ServiceLocatorInterface $serviceLocator
-     * @return ForgotService
+     * @return ForgotPasswordService
      */
     public function createService(ServiceLocatorInterface $serviceLocator)
     {
@@ -31,6 +31,6 @@ class ForgotServiceFactory implements FactoryInterface
         /** @var \Eye4web\ZfcUser\ForgotPassword\Service\MailService $mailService */
         $mailService = $serviceLocator->get('Eye4web\ZfcUser\ForgotPassword\Service\MailService');
 
-        return new ForgotService($requestForm, $changePassword, $userMapper, $tokenMapper, $mailService);
+        return new ForgotPasswordService($requestForm, $changePassword, $userMapper, $tokenMapper, $mailService);
     }
 }

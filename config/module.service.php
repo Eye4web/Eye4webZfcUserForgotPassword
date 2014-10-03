@@ -11,7 +11,7 @@ return [
     ],
 
     'factories' => [
-        'Eye4web\ZfcUser\ForgotPassword\Service\ForgotService' => 'Eye4web\ZfcUser\ForgotPassword\Factory\Service\ForgotServiceFactory',
+        'Eye4web\ZfcUser\ForgotPassword\Service\ForgotPasswordService' => 'Eye4web\ZfcUser\ForgotPassword\Factory\Service\ForgotPasswordServiceFactory',
         'Eye4web\ZfcUser\ForgotPassword\Service\MailService' => 'Eye4web\ZfcUser\ForgotPassword\Factory\Service\MailServiceFactory',
 
         'Eye4web\ZfcUser\ForgotPassword\Options\ModuleOptions' => 'Eye4web\ZfcUser\ForgotPassword\Factory\Options\ModuleOptionsFactory',

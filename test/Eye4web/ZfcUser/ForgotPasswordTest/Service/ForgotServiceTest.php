@@ -2,12 +2,12 @@
 
 namespace Eye4web\ZfcUser\ForgotPasswordTest\Service;
 
-use Eye4web\ZfcUser\ForgotPassword\Service\ForgotService;
+use Eye4web\ZfcUser\ForgotPassword\Service\ForgotPasswordService;
 use PHPUnit_Framework_TestCase;
 
-class ForgotServiceTest extends PHPUnit_Framework_TestCase
+class ForgotPasswordServiceTest extends PHPUnit_Framework_TestCase
 {
-    /** @var ForgotService */
+    /** @var ForgotPasswordService */
     protected $service;
 
     /** @var \Eye4web\ZfcUser\ForgotPassword\Form\Forgot\RequestForm */
@@ -49,7 +49,7 @@ class ForgotServiceTest extends PHPUnit_Framework_TestCase
                             ->getMock();
         $this->mailService = $mailService;
 
-        $service = new ForgotService(
+        $service = new ForgotPasswordService(
             $requestForm,
             $changePasswordForm,
             $userMapper,

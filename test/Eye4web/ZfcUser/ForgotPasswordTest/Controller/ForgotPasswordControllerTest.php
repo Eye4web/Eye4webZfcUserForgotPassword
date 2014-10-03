@@ -2,12 +2,12 @@
 
 namespace Eye4web\ZfcUser\ForgotPasswordTest\Controller;
 
-use Eye4web\ZfcUser\ForgotPassword\Controller\ForgotController;
+use Eye4web\ZfcUser\ForgotPassword\Controller\ForgotPasswordController;
 use PHPUnit_Framework_TestCase;
 
-class ForgotControllerTest extends PHPUnit_Framework_TestCase
+class ForgotPasswordControllerTest extends PHPUnit_Framework_TestCase
 {
-    /** @var ForgotController */
+    /** @var ForgotPasswordController */
     protected $controller;
 
     /** @var \Eye4web\ZfcUser\ForgotPassword\Form\Forgot\RequestForm */
@@ -16,8 +16,8 @@ class ForgotControllerTest extends PHPUnit_Framework_TestCase
     /** @var \Eye4web\ZfcUser\ForgotPassword\Form\Forgot\ChangePasswordForm */
     protected $changePasswordForm;
 
-    /** @var \Eye4web\ZfcUser\ForgotPassword\Service\ForgotService */
-    protected $forgotService;
+    /** @var \Eye4web\ZfcUser\ForgotPassword\Service\ForgotPasswordService */
+    protected $ForgotPasswordService;
 
     /** @var \Zend\Mvc\Controller\PluginManager */
     protected $pluginManager;
@@ -34,12 +34,12 @@ class ForgotControllerTest extends PHPUnit_Framework_TestCase
         $changePasswordForm = $this->getMock('Eye4web\ZfcUser\ForgotPassword\Form\Forgot\ChangePasswordForm');
         $this->changePasswordForm = $changePasswordForm;
 
-        /** @var \Eye4web\ZfcUser\ForgotPassword\Service\ForgotService $forgotService */
-        $forgotService = $this->getMockBuilder('Eye4web\ZfcUser\ForgotPassword\Service\ForgotService')
+        /** @var \Eye4web\ZfcUser\ForgotPassword\Service\ForgotPasswordService $ForgotPasswordService */
+        $ForgotPasswordService = $this->getMockBuilder('Eye4web\ZfcUser\ForgotPassword\Service\ForgotPasswordService')
             ->disableOriginalConstructor()
             ->getMock();
 
-        $this->forgotService = $forgotService;
+        $this->ForgotPasswordService = $ForgotPasswordService;
 
         /** @var \Zend\Mvc\Controller\PluginManager $pluginManager */
         $pluginManager = $this->getMock('Zend\Mvc\Controller\PluginManager', array('get'));
@@ -50,7 +50,7 @@ class ForgotControllerTest extends PHPUnit_Framework_TestCase
 
         $this->pluginManager = $pluginManager;
 
-        $controller = new ForgotController($requestForm, $changePasswordForm, $forgotService);
+        $controller = new ForgotPasswordController($requestForm, $changePasswordForm, $ForgotPasswordService);
         $controller->setPluginManager($pluginManager);
 
         $this->controller = $controller;
@@ -112,7 +112,7 @@ class ForgotControllerTest extends PHPUnit_Framework_TestCase
 
         $this->pluginManagerPlugins['prg'] = $prg;
 
-        $this->forgotService->expects($this->once())
+        $this->ForgotPasswordService->expects($this->once())
             ->method('request')
             ->with($data)
             ->willReturn(false);
@@ -145,7 +145,7 @@ class ForgotControllerTest extends PHPUnit_Framework_TestCase
 
         $this->pluginManagerPlugins['prg'] = $prg;
 
-        $this->forgotService->expects($this->once())
+        $this->ForgotPasswordService->expects($this->once())
             ->method('request')
             ->with($data)
             ->willReturn(true);
@@ -170,7 +170,7 @@ class ForgotControllerTest extends PHPUnit_Framework_TestCase
 
         $this->pluginManagerPlugins['params'] = $params;
 
-        $this->forgotService->expects($this->once())
+        $this->ForgotPasswordService->expects($this->once())
             ->method('getUserFromToken')
             ->with($token)
             ->willReturn(false);
@@ -197,7 +197,7 @@ class ForgotControllerTest extends PHPUnit_Framework_TestCase
 
         $this->pluginManagerPlugins['params'] = $params;
 
-        $this->forgotService->expects($this->once())
+        $this->ForgotPasswordService->expects($this->once())
             ->method('getUserFromToken')
             ->with($token)
             ->willReturn($userMock);
@@ -240,7 +240,7 @@ class ForgotControllerTest extends PHPUnit_Framework_TestCase
 
         $this->pluginManagerPlugins['params'] = $params;
 
-        $this->forgotService->expects($this->once())
+        $this->ForgotPasswordService->expects($this->once())
             ->method('getUserFromToken')
             ->with($token)
             ->willReturn($userMock);
@@ -261,7 +261,7 @@ class ForgotControllerTest extends PHPUnit_Framework_TestCase
 
         $this->pluginManagerPlugins['prg'] = $prg;
 
-        $this->forgotService->expects($this->once())
+        $this->ForgotPasswordService->expects($this->once())
             ->method('changePassword')
             ->with($data, $userMock)
             ->willReturn(false);
@@ -295,7 +295,7 @@ class ForgotControllerTest extends PHPUnit_Framework_TestCase
 
         $this->pluginManagerPlugins['params'] = $params;
 
-        $this->forgotService->expects($this->once())
+        $this->ForgotPasswordService->expects($this->once())
             ->method('getUserFromToken')
             ->with($token)
             ->willReturn($userMock);
@@ -316,7 +316,7 @@ class ForgotControllerTest extends PHPUnit_Framework_TestCase
 
         $this->pluginManagerPlugins['prg'] = $prg;
 
-        $this->forgotService->expects($this->once())
+        $this->ForgotPasswordService->expects($this->once())
             ->method('changePassword')
             ->with($data, $userMock)
             ->willReturn(true);

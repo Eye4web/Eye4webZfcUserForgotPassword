@@ -4,12 +4,12 @@ namespace Eye4web\ZfcUser\ForgotPassword\Controller;
 
 use Eye4web\ZfcUser\ForgotPassword\Form\Forgot\ChangePasswordForm;
 use Eye4web\ZfcUser\ForgotPassword\Form\Forgot\RequestForm;
-use Eye4web\ZfcUser\ForgotPassword\Service\ForgotService;
+use Eye4web\ZfcUser\ForgotPassword\Service\ ForgotPasswordService;
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
 use Zend\Stdlib\ResponseInterface as Response;
 
-class ForgotController extends AbstractActionController
+class ForgotPasswordController extends AbstractActionController
 {
     /** @var RequestForm */
     protected $requestForm;
@@ -17,20 +17,20 @@ class ForgotController extends AbstractActionController
     /** @var ChangePasswordForm */
     protected $changePasswordForm;
 
-    /** @var ForgotService */
-    protected $forgotService;
+    /** @var ForgotPasswordService */
+    protected $ForgotPasswordService;
 
-    public function __construct(RequestForm $requestForm, ChangePasswordForm $changePasswordForm, ForgotService $forgotService)
+    public function __construct(RequestForm $requestForm, ChangePasswordForm $changePasswordForm, ForgotPasswordService $ForgotPasswordService)
     {
         $this->requestForm = $requestForm;
         $this->changePasswordForm = $changePasswordForm;
-        $this->forgotService = $forgotService;
+        $this->ForgotPasswordService = $ForgotPasswordService;
     }
 
     public function indexAction()
     {
         $form = $this->requestForm;
-        $forgotService = $this->forgotService;
+        $ForgotPasswordService = $this->ForgotPasswordService;
 
         $viewModel = new ViewModel([
             'form' => $form,
@@ -47,7 +47,7 @@ class ForgotController extends AbstractActionController
             return $viewModel;
         }
 
-        if ($forgotService->request($prg)) {
+        if ($ForgotPasswordService->request($prg)) {
             $viewModel->setTemplate('zfc-user-forgot-password/confirmation/sent-email.phtml');
             return $viewModel;
         }
@@ -58,9 +58,9 @@ class ForgotController extends AbstractActionController
     public function changePasswordAction()
     {
         $form = $this->changePasswordForm;
-        $forgotService = $this->forgotService;
+        $ForgotPasswordService = $this->ForgotPasswordService;
         $token = $this->params('token');
-        $user = $forgotService->getUserFromToken($token);
+        $user = $ForgotPasswordService->getUserFromToken($token);
 
         $viewModel = new ViewModel([
             'form' => $form,
@@ -82,7 +82,7 @@ class ForgotController extends AbstractActionController
             return $viewModel;
         }
 
-        if ($forgotService->changePassword($prg, $user)) {
+        if ($ForgotPasswordService->changePassword($prg, $user)) {
             $viewModel->setTemplate('zfc-user-forgot-password/confirmation/changed-password.phtml');
             return $viewModel;
         }

@@ -12,9 +12,9 @@ return [
                     'zfc-user-forgot-password' => [
                         'type' => 'Zend\Mvc\Router\Http\Literal',
                         'options' => [
-                            'route' => 'forgot',
+                            'route' => 'forgot-password',
                             'defaults' => [
-                                'controller' => 'Eye4web\ZfcUser\ForgotPassword\Controller\ForgotController',
+                                'controller' => 'Eye4web\ZfcUser\ForgotPassword\Controller\ForgotPasswordController',
                                 'action'     => 'index',
                             ],
                         ],
@@ -25,7 +25,7 @@ return [
                                 'options' => [
                                     'route' => '/change-password/:token',
                                     'defaults' => [
-                                        'controller' => 'Eye4web\ZfcUser\ForgotPassword\Controller\ForgotController',
+                                        'controller' => 'Eye4web\ZfcUser\ForgotPassword\Controller\ForgotPasswordController',
                                         'action'     => 'changePassword',
                                     ],
                                 ],

@@ -10,7 +10,7 @@ use Eye4web\ZfcUser\ForgotPassword\Mapper\UserMapperInterface;
 use Eye4web\ZfcUser\ForgotPassword\Entity\TokenInterface;
 use ZfcUser\Entity\UserInterface;
 
-class ForgotService
+class ForgotPasswordService
 {
     /** @var RequestForm */
     protected $requestForm;
