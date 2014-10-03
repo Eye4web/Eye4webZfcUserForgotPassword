@@ -9,6 +9,12 @@
         <whitelist addUncoveredFilesFromWhitelist="true">
             <directory suffix=".php">./src</directory>
             <exclude>
+                <directory suffix=".php">./config</directory>
+                <directory suffix=".php">./src/Eye4web/ZfcUser/ForgotPassword/Entity</directory>
+                <file>./src/Eye4web/ZfcUser/ForgotPassword/Mapper/TokenMapperInterface.php</file>
+                <file>./src/Eye4web/ZfcUser/ForgotPassword/Mapper/UserMapperInterface.php</file>
+                <file>./src/Eye4web/ZfcUser/ForgotPassword/Options/ModuleOptionsInterface.php</file>
+                <file>./src/Eye4web/ZfcUser/ForgotPassword/Service/MailTransportInterface.php</file>
             </exclude>
         </whitelist>
     </filter>
