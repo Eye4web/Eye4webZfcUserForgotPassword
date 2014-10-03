@@ -26,5 +26,7 @@ class ChangePasswordFormTest extends PHPUnit_Framework_TestCase
         $this->assertTrue($form->has('confirm_new_password'));
         $this->assertTrue($form->has('csrf'));
         $this->assertTrue($form->has('submit'));
+        $this->assertTrue($form->getInputFilter()->has('new_password'));
+        $this->assertTrue($form->getInputFilter()->has('confirm_new_password'));
     }
 }
