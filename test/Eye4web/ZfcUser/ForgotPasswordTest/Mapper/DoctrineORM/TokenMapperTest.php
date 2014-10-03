@@ -237,4 +237,50 @@ class TokenMapperTest extends PHPUnit_Framework_TestCase
 
         $this->assertInstanceOf('Eye4web\ZfcUser\ForgotPassword\Entity\TokenInterface', $result);
     }
+
+    public function testGenerateWithLessThanOneHour()
+    {
+        $userId = 1;
+        $tokenEntity = 'Eye4web\ZfcUser\ForgotPassword\Entity\Token';
+        $tokenHours = 1;
+
+        /** @var \ZfcUser\Entity\UserInterface $userMock */
+        $userMock = $this->getMock('ZfcUser\Entity\UserInterface');
+        $userMock->expects($this->any())
+            ->method('getId')
+            ->willReturn($userId);
+
+        $this->options->expects($this->any())
+            ->method('getTokenEntity')
+            ->willReturn($tokenEntity);
+
+        $this->options->expects($this->any())
+            ->method('getTokenHours')
+            ->willReturn($tokenHours);
+
+        /** @var \Doctrine\Common\Persistence\ObjectRepository $objectRepository */
+        $objectRepository = $this->getMock('Doctrine\Common\Persistence\ObjectRepository');
+
+        $this->objectManager->expects($this->at(0))
+            ->method('getRepository')
+            ->with($tokenEntity)
+            ->willReturn($objectRepository);
+
+        $objectRepository->expects($this->once())
+            ->method('findOneBy')
+            ->with([
+                'user' => $userId
+            ])
+            ->willReturn(null);
+
+        $this->objectManager->expects($this->at(1))
+            ->method('persist');
+
+        $this->objectManager->expects($this->at(2))
+            ->method('flush');
+
+        $result = $this->mapper->generate($userMock);
+
+        $this->assertInstanceOf('Eye4web\ZfcUser\ForgotPassword\Entity\TokenInterface', $result);
+    }
 }
