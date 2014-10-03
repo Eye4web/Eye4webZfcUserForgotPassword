@@ -43,21 +43,27 @@ class ForgotPasswordServiceFactoryTest extends PHPUnit_Framework_TestCase
             ->with('Eye4web\ZfcUser\ForgotPassword\Form\Forgot\ChangePasswordForm')
             ->willReturn($changePasswordMock);
 
-        $userMapper = $this->getMockBuilder('Eye4web\ZfcUser\ForgotPassword\Mapper\UserMapperInterface');
+        $userMapper = $this->getMockBuilder('Eye4web\ZfcUser\ForgotPassword\Mapper\UserMapperInterface')
+            ->disableOriginalConstructor()
+            ->getMock();
 
         $serviceLocator->expects($this->at(2))
             ->method('get')
             ->with('Eye4web\ZfcUser\ForgotPassword\Mapper\UserMapper')
             ->willReturn($userMapper);
 
-        $tokenMapper = $this->getMockBuilder('Eye4web\ZfcUser\ForgotPassword\Mapper\TokenMapperInterface');
+        $tokenMapper = $this->getMockBuilder('Eye4web\ZfcUser\ForgotPassword\Mapper\TokenMapperInterface')
+            ->disableOriginalConstructor()
+            ->getMock();
 
         $serviceLocator->expects($this->at(3))
             ->method('get')
             ->with('Eye4web\ZfcUser\ForgotPassword\Mapper\TokenMapper')
             ->willReturn($tokenMapper);
 
-        $mailService = $this->getMockBuilder('Eye4web\ZfcUser\ForgotPassword\Service\MailService');
+        $mailService = $this->getMockBuilder('Eye4web\ZfcUser\ForgotPassword\Service\MailService')
+            ->disableOriginalConstructor()
+            ->getMock();
 
         $serviceLocator->expects($this->at(4))
             ->method('get')
