@@ -27,7 +27,7 @@ $form->setAttribute('method', 'post');
 
 <?php echo $this->form()->closeTag() ?>
 
-<a href="<?php echo $this->url('e4w/zfc-user-forgot-password') ?>"
+<a href="<?php echo $this->url('e4w/zfc-user-forgot-password') ?>"><?php echo $this->translate('Forgot your password?') ?></a>
 
 <?php if ($this->enableRegistration) : ?>
 <?php echo $this->translate('Not registered?'); ?> <a href="<?php echo $this->url('zfcuser/register') . ($this->redirect ? '?redirect='.$this->redirect : '') ?>"><?php echo $this->translate('Sign up!'); ?></a>
