@@ -19,7 +19,7 @@ class MailService
     {
         $options = [
             'to' => $user->getEmail(),
-            'subject' => 'Forgot password test',
+            'subject' => 'Forgot password',
             'template' => 'email/request-password'
         ];
 
