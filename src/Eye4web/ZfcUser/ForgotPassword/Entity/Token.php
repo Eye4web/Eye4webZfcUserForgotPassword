@@ -27,9 +27,9 @@ class Token implements TokenInterface
     protected $token;
 
     /**
-     * @var int
+     * @var string
      *
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="string", length=255)
      */
     protected $user;
 
@@ -79,7 +79,7 @@ class Token implements TokenInterface
     }
 
     /**
-     * @param int $user
+     * @param string $user
      */
     public function setUser($user)
     {
@@ -87,7 +87,7 @@ class Token implements TokenInterface
     }
 
     /**
-     * @return int
+     * @return string
      */
     public function getUser()
     {
