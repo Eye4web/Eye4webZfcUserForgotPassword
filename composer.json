@@ -24,7 +24,6 @@
     "require": {
         "php": ">=5.4",
         "zendframework/zendframework": "~2.3",
-        "doctrine/orm": "2.4.*",
         "zf-commons/zfc-user": ">=1.2.0"
     },
     "autoload": {
