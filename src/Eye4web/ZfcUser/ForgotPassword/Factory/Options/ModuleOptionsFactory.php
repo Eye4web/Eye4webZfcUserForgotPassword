@@ -5,6 +5,12 @@ namespace Eye4web\ZfcUser\ForgotPassword\Factory\Options;
 use Eye4web\ZfcUser\ForgotPassword\Options\ModuleOptions;
 use Zend\ServiceManager\FactoryInterface;
 use Zend\ServiceManager\ServiceLocatorInterface;
+use Zend\ServiceManager\FactoryInterface as LegacyFactoryInterface;
+use Interop\Container\ContainerInterface;
+
+if (!\interface_exists(FactoryInterface::class)) {
+    \class_alias(LegacyFactoryInterface::class, FactoryInterface::class);
+}
 
 class ModuleOptionsFactory implements FactoryInterface
 {
@@ -27,5 +33,13 @@ class ModuleOptionsFactory implements FactoryInterface
         $options = new ModuleOptions($boardConfig);
 
         return $options;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function __invoke(ContainerInterface $serviceLocator, $requestedName, array $options = null)
+    {
+        return $this->createService($serviceLocator);
     }
 }
