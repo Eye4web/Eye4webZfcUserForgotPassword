@@ -3,6 +3,7 @@
 namespace Eye4web\ZfcUser\ForgotPassword\Factory\Service;
 
 use Eye4web\ZfcUser\ForgotPassword\Service\MailService;
+use Interop\Container\ContainerInterface;
 use Zend\ServiceManager\FactoryInterface;
 use Zend\ServiceManager\ServiceLocatorInterface;
 
@@ -23,5 +24,10 @@ class MailServiceFactory implements FactoryInterface
         $mailTransporter = $serviceLocator->get($moduleOptions->getMailTransporter());
 
         return new MailService($mailTransporter);
+    }
+
+    public function __invoke(ContainerInterface $container, $requestedName, array $options = NULL)
+    {
+        return $this->createService($container);
     }
 }

@@ -3,6 +3,7 @@
 namespace Eye4web\ZfcUser\ForgotPassword\Factory\Options;
 
 use Eye4web\ZfcUser\ForgotPassword\Options\ModuleOptions;
+use Interop\Container\ContainerInterface;
 use Zend\ServiceManager\FactoryInterface;
 use Zend\ServiceManager\ServiceLocatorInterface;
 
@@ -27,5 +28,10 @@ class ModuleOptionsFactory implements FactoryInterface
         $options = new ModuleOptions($boardConfig);
 
         return $options;
+    }
+
+    public function __invoke(ContainerInterface $container, $requestedName, array $options = NULL)
+    {
+        return $this->createService($container);
     }
 }

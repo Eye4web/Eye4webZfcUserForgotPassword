@@ -3,6 +3,7 @@
 namespace Eye4web\ZfcUser\ForgotPassword\Factory\Service;
 
 use Eye4web\ZfcUser\ForgotPassword\Service\ForgotPasswordService;
+use Interop\Container\ContainerInterface;
 use Zend\ServiceManager\FactoryInterface;
 use Zend\ServiceManager\ServiceLocatorInterface;
 
@@ -32,5 +33,10 @@ class ForgotPasswordServiceFactory implements FactoryInterface
         $mailService = $serviceLocator->get('Eye4web\ZfcUser\ForgotPassword\Service\MailService');
 
         return new ForgotPasswordService($requestForm, $changePassword, $userMapper, $tokenMapper, $mailService);
+    }
+
+    public function __invoke(ContainerInterface $container, $requestedName, array $options = NULL)
+    {
+        return $this->createService($container);
     }
 }

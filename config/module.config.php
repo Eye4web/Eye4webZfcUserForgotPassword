@@ -3,14 +3,14 @@ return [
     'router' => [
         'routes' => [
             'e4w' => [
-                'type' => 'Zend\Mvc\Router\Http\Literal',
+                'type' => \Zend\Router\Http\Literal::class,
                 'options' => [
                     'route' => '/'
                 ],
                 'may_terminate' => false,
                 'child_routes' => [
                     'zfc-user-forgot-password' => [
-                        'type' => 'Zend\Mvc\Router\Http\Literal',
+                        'type' => \Zend\Router\Http\Literal::class,
                         'options' => [
                             'route' => 'forgot-password',
                             'defaults' => [
@@ -21,7 +21,7 @@ return [
                         'may_terminate' => true,
                         'child_routes' => [
                             'change-password' => [
-                                'type' => 'Zend\Mvc\Router\Http\Segment',
+                                'type' => \Zend\Router\Http\Segment::class,
                                 'options' => [
                                     'route' => '/change-password/:token',
                                     'defaults' => [
