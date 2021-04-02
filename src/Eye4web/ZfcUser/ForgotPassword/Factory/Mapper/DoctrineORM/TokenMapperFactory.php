@@ -17,7 +17,7 @@ class TokenMapperFactory implements FactoryInterface
      */
     public function createService(ServiceLocatorInterface $serviceLocator)
     {
-        /** @var \Doctrine\Common\Persistence\ObjectManager $objectManager */
+        /** @var \Doctrine\Persistence\ObjectManager $objectManager */
         $objectManager = $serviceLocator->get('objectManager');
 
         /** @var \Eye4web\ZfcUser\ForgotPassword\Options\ModuleOptions $moduleOptions */
@@ -26,7 +26,7 @@ class TokenMapperFactory implements FactoryInterface
         return new TokenMapper($objectManager, $moduleOptions);
     }
 
-    public function __invoke(ContainerInterface $container, $requestedName, array $options = NULL)
+    public function __invoke(\Psr\Container\ContainerInterface $container, $requestedName, array $options = NULL)
     {
         return $this->createService($container);
     }

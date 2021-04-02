@@ -17,7 +17,7 @@ class UserMapperFactory implements FactoryInterface
      */
     public function createService(ServiceLocatorInterface $serviceLocator)
     {
-        /** @var \Doctrine\Common\Persistence\ObjectManager $objectManager */
+        /** @var \Doctrine\Persistence\ObjectManager $objectManager */
         $objectManager = $serviceLocator->get('objectManager');
 
         /** @var \ZfcUser\Options\ModuleOptions $zfcUserModuleOptions */
@@ -26,7 +26,7 @@ class UserMapperFactory implements FactoryInterface
         return new UserMapper($objectManager, $zfcUserModuleOptions);
     }
 
-    public function __invoke(ContainerInterface $container, $requestedName, array $options = NULL)
+    public function __invoke(\Psr\Container\ContainerInterface $container, $requestedName, array $options = NULL)
     {
         return $this->createService($container);
     }

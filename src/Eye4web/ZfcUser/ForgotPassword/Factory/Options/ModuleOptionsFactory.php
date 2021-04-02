@@ -30,7 +30,7 @@ class ModuleOptionsFactory implements FactoryInterface
         return $options;
     }
 
-    public function __invoke(ContainerInterface $container, $requestedName, array $options = NULL)
+    public function __invoke(\Psr\Container\ContainerInterface $container, $requestedName, array $options = NULL)
     {
         return $this->createService($container);
     }

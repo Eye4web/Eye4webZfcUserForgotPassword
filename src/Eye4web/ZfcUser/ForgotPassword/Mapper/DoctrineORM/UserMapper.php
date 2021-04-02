@@ -10,13 +10,13 @@ use Zend\Crypt\Password\Bcrypt;
 
 class UserMapper implements UserMapperInterface
 {
-    /** @var ObjectManager */
+    /** @var \Doctrine\Persistence\ObjectManager */
     protected $objectManager;
 
     /** @var ZfcUserModuleOptions */
     protected $zfcUserModuleOptions;
 
-    public function __construct(ObjectManager $objectManager, ZfcUserModuleOptions $zfcUserModuleOptions)
+    public function __construct(\Doctrine\Persistence\ObjectManager $objectManager, ZfcUserModuleOptions $zfcUserModuleOptions)
     {
         $this->objectManager = $objectManager;
         $this->zfcUserModuleOptions = $zfcUserModuleOptions;

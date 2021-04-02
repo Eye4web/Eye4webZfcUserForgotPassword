@@ -35,7 +35,7 @@ class ForgotPasswordServiceFactory implements FactoryInterface
         return new ForgotPasswordService($requestForm, $changePassword, $userMapper, $tokenMapper, $mailService);
     }
 
-    public function __invoke(ContainerInterface $container, $requestedName, array $options = NULL)
+    public function __invoke(\Psr\Container\ContainerInterface $container, $requestedName, array $options = NULL)
     {
         return $this->createService($container);
     }

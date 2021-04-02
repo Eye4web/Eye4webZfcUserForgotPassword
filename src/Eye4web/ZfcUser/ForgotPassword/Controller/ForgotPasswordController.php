@@ -4,7 +4,7 @@ namespace Eye4web\ZfcUser\ForgotPassword\Controller;
 
 use Eye4web\ZfcUser\ForgotPassword\Form\Forgot\ChangePasswordForm;
 use Eye4web\ZfcUser\ForgotPassword\Form\Forgot\RequestForm;
-use Eye4web\ZfcUser\ForgotPassword\Service\ ForgotPasswordService;
+use Eye4web\ZfcUser\ForgotPassword\Service\ForgotPasswordService;
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
 use Zend\Stdlib\ResponseInterface as Response;

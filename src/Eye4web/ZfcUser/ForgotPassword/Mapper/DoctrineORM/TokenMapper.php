@@ -11,13 +11,13 @@ use ZfcUser\Options\ModuleOptions as ZfcUserModuleOptions;
 
 class TokenMapper implements TokenMapperInterface
 {
-    /** @var ObjectManager */
+    /** @var \Doctrine\Persistence\ObjectManager */
     protected $objectManager;
 
     /** @var ModuleOptions */
     protected $moduleOptions;
 
-    public function __construct(ObjectManager $objectManager, ModuleOptions $moduleOptions)
+    public function __construct(\Doctrine\Persistence\ObjectManager $objectManager, ModuleOptions $moduleOptions)
     {
         $this->objectManager = $objectManager;
         $this->moduleOptions = $moduleOptions;
