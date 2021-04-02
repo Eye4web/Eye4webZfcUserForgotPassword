@@ -32,7 +32,7 @@ class ForgotPasswordControllerFactory implements FactoryInterface
         return new ForgotPasswordController($requestForm, $changePassword, $forgotPasswordService);
     }
 
-    public function __invoke(ContainerInterface $container, $requestedName, array $options = NULL)
+    public function __invoke(\Psr\Container\ContainerInterface $container, $requestedName, array $options = NULL)
     {
         /** @var \Eye4web\ZfcUser\ForgotPassword\Form\Forgot\RequestForm $requestForm */
         $requestForm = $container->get('Eye4web\ZfcUser\ForgotPassword\Form\Forgot\RequestForm');
