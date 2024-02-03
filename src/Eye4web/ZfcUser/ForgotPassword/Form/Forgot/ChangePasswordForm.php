@@ -42,11 +42,6 @@ class ChangePasswordForm extends Form implements InputFilterProviderInterface
         ]);
 
         $this->add([
-            'type' => 'Zend\Form\Element\Csrf',
-            'name' => 'csrf',
-        ]);
-
-        $this->add([
             'name' => 'submit',
             'type' => 'Zend\Form\Element\Button',
             'attributes' => [
