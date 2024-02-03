@@ -18,7 +18,7 @@
     ],
     "require": {
         "php": "^7.2|^8.0",
-        "zf-commons/zfc-user": "dev-patch-1"
+        "zf-commons/zfc-user": "dev-patch-2"
     },
     "autoload": {
         "psr-0": {
